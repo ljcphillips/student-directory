@@ -8,14 +8,19 @@ def input_students
   name = gets.chomp
   #while the name is not empty, repeat this code
   while !name.empty? do
-    puts "hobby?".center(80)
-    hobby = gets.chomp
-    puts "birth country?".center(80)
-    birth_country = gets.chomp
-    puts "height?".center(80)
-    height = gets.chomp
+    puts "cohort?".center(80)
+    cohort = gets.chomp
+      if cohort.empty?
+        cohort = "december"
+      end
+    puts "Your cohort is #{cohort}. Is that correct? (Y/N)"
+    answer = gets.chomp
+      if answer == "N"
+        puts "cohort?".center(80)
+        cohort = gets.chomp
+      end
     #add the student hash to the array
-    students << {name: name, hobby: hobby, birth_country: birth_country, height: height, cohort: :november}
+    students << {name: name,cohort: cohort.to_sym}
     puts "Now we have #{students.count} students".center(80)
     #get another name from the user
     puts "Please enter the name of the next student".center(80)
